@@ -37,6 +37,8 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        SetHighScoreText();
     }
 
     private void Update()
@@ -56,6 +58,12 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
+            if (m_Points > GameSingleton.Instance.HighScore)
+            {
+                Debug.Log("New high score!");
+                SetHighScore();
+            }
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -66,7 +74,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        SetScoreText();
     }
 
     void SetHighScore()
@@ -78,6 +86,11 @@ public class MainManager : MonoBehaviour
     void SetHighScoreText()
     {
         HighScoreText.text = "Best Score: " + GameSingleton.Instance.HighScoreHolder + ": " + GameSingleton.Instance.HighScore;
+    }
+
+    void SetScoreText()
+    {
+        ScoreText.text = $"{GameSingleton.Instance.PlayerName} : {m_Points}";
     }
 
     public void GameOver()

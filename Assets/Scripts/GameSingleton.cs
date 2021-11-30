@@ -59,6 +59,9 @@ public class GameSingleton : MonoBehaviour
 
     private void SaveHighScore(int score)
     {
+        HighScoreHolder = PlayerName;
+        HighScore = score;
+
         HighScoreData data = new HighScoreData();
         data.Name = PlayerName;
         data.Score = score;

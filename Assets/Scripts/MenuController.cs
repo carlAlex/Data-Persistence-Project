@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     private void StartGame()
     {
         Debug.Log(nameEntry.text + " is entering the game..");
+        GameSingleton.Instance.PlayerName = nameEntry.text;
         SceneManager.LoadScene(1);
     }
 }

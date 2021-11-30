@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text HighScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -66,6 +67,17 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+    }
+
+    void SetHighScore()
+    {
+        GameSingleton.Instance.SetHighScore(m_Points);
+        SetHighScoreText();
+    }
+
+    void SetHighScoreText()
+    {
+        HighScoreText.text = "Best Score: " + GameSingleton.Instance.HighScoreHolder + ": " + GameSingleton.Instance.HighScore;
     }
 
     public void GameOver()

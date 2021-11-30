@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class MenuController : MonoBehaviour
 
     private void StartGame()
     {
-        Debug.Log(nameEntry.text);
+        Debug.Log(nameEntry.text + " is entering the game..");
+        SceneManager.LoadScene(1);
     }
 }
